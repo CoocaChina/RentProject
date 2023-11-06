@@ -1,0 +1,9 @@
+/venv
+*.log
+.ropeproject
+.project
+.coverage
+.pydevproject
+.vscode
+.settings
+.idea

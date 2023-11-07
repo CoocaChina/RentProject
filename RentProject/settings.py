@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'RentProject'
+    'RentProject',
+    'user_massage'
 ]
 
 MIDDLEWARE = [
@@ -78,6 +79,21 @@ WSGI_APPLICATION = 'RentProject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        'NAME': 'home',
+        'USER': 'root',
+        'PASSWORD': 'Sjf235689-*',
+        'HOST': '203.104.42.26',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            }
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

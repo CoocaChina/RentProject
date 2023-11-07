@@ -10,7 +10,7 @@
     <link href="https://cdn.staticfile.org/ionic/1.3.2/css/ionic.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static '/client/plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
     <link rel="shortcut icon" href="{% static '/client/favicon.ico' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static '/client/css/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/client/css/first.css'%}">
 
     <style type="text/css">
         body {
@@ -26,24 +26,46 @@
         }
 
         @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
+        .form-horizontal .form-group {
+            margin-right: 40px;
+            margin-left: 40px;
+        }
+
+
+        @media (min-width: 768px) {
+            .form-horizontal .control-label {
+                padding-top: 29px;
+                margin-bottom: 20px;
+                text-align: right;
+            }
+        }
+        
     </style>
 
 </head>
 
 <body>
     <div>
-        <!--主体内容-->
-        <div>
-            <div class="box" style="margin:0 auto">
-                <form method="post" class="form-horizontal clearfix form-p">
-                    <h2>FLY-用户登录</h2>
+        <div class="login_h">
+            <div class="box ">
+                <form method="post" class="form-horizontal ">
+
+                    <div class="title_table">
+                        <h1>FLY-用户登录</h1>
+                    </div>
                     {% csrf_token %}
-                    <div class="form-group ">
-                        <label for="inputuser" class=" col-sm-2 control-label">手机号：</label>
-                        <div class="col-sm-10">
+                    <div class="form-group title_table">
+                        <div class="col-xs-12">
                             <input type="username" class="form-control" id="inputuser" name="username"
                                 placeholder="请输入手机号">
-                            <div class="alert alert-danger" role="alert">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input type="username" class="form-control" id="inputuser" name="username"
+                                placeholder="请输入密码">
+                            <div class="alert alert_danger" role="alert">
                                 <strong>{{msg}}</strong>
                             </div>
                         </div>

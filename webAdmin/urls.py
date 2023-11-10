@@ -6,6 +6,7 @@ from webAdmin.views import index
 urlpatterns = [
     #首页
 
-    path('', index.index, name="ruhrpc_index"),
+    path('', index.index, name="pc_index"),
+    path('login/', index.login, name="pc_login"),
 
 ]

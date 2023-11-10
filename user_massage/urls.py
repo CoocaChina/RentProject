@@ -6,5 +6,6 @@ from user_massage.views import user_login
 urlpatterns = [
     #首页
     path('user/login/', user_login.login),
+    path('user/index/', user_login.index),
 
 ]

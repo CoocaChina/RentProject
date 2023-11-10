@@ -1,18 +1,15 @@
 .login_h {
     text-align: center;
-    /*让div内部文字居中*/
-
     margin-top: 45%
 }
-
 .box {
     background-color: #86868633;
+    border-radius: 25px;
+    border: 2px solid #999090;
     height: 60%;
     padding-top: 40px ;
     padding-bottom: 40px;
-    box-shadow: -1px -1px 3px rgb(125 125 125), 1px 1px 3px rgb(0 0 0);
 }
-
 .col-xs-12 input {
     margin-top: 20px;
 }
@@ -30,4 +27,15 @@
 .alert_danger {
     color: #a94442;
 }
+/* ⬆ 登录页面 */
 
+
+.left{
+
+    float: left;
+}
+
+.right{
+
+    float: right;
+}

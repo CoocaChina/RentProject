@@ -1,6 +1,6 @@
 {% load static from static %}
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -172,7 +172,7 @@
               </li>
             </ul>
           </li>
-          
+
         </ul>
       </div>
     </nav>
@@ -201,10 +201,19 @@
         <li class="header">主要导航</li>
         <!-- 导航列表，你可以自行更改图标 -->
         <li class="active"><a href=""><i class="fa fa-home"></i> <span>首页</span></a></li>
-        
-        <li><a href=""><i class="fa fa-users"></i> <span>多协</span></a></li>
-        <li><a href=""><i class="fa fa-sitemap"></i> <span>洲斯</span></a></li>
-        <li><a href=""><i class="fa fa-shopping-cart"></i> <span>必创</span></a></li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-cutlery"></i> <span>菜品管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"> <i class="fa fa-circle-o"></i> 菜品分类</a></li>
+            <li><a href="#"> <i class="fa fa-circle-o"></i> 菜品信息</a></li>
+          </ul>
+        </li>
+        <li><a href="#"><i class="fa fa-sitemap"></i> <span>洲斯</span></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i> <span>必创</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -255,7 +264,7 @@
 <!-- edu-model-end -->
 
 <!-- REQUIRED JS SCRIPTS -->
-  
+
 <script src="{% static 'rent/bower_components/jquery/dist/jquery.min.js'%}"></script>
   <!-- Bootstrap 3.3.7 -->
   <script src="{% static 'rent/bower_components/bootstrap/dist/js/bootstrap.min.js'%}"></script>

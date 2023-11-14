@@ -134,7 +134,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Fly</a>
+                    <a class="navbar-brand" href="/user/index">Fly</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -171,50 +171,37 @@
               </div>
             </div>
           </div>
-        <div class="gdt git_l">
-            <div class="row_box">
-                <div class=" col-md-4 row_one">
-                    <img src="/static/client/img/xx.png" alt="">
-                </div>
-                <div class="col-md-8 ">
-                    <h3>个人信息</h3>
-                    <p>个人信息展示</p>
-                    <div><a class="a_herf" type="button" href="/user/msg">进入</a></div>
-                </div>
-            </div>
-            <div class="row_box">
-                <div class=" col-md-4 row_two">
-                    <img src="/static/client/img/fz.png" alt="">
-                </div>
-                <div class="col-md-8">
-                    <h3>房租详情</h3>
-                    <p>房间的房租配置</p>
-                    <div><a class="a_herf" type="button" href="/user/details">进入</a></div>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">房租详情</h4> -->
-                </div>
-            </div>
-            <div class="row_box">
-                <div class=" col-md-4 row_thr">
-                    <img src="/static/client/img/sd.png" alt="">
-                </div>
-                <div class="col-md-8 ">
-                    <h3>水电度数</h3>
-                    <p>记录水电使用量</p>
-                    <div><a class="a_herf" type="button" href="/user/hydropower">进入</a></div>
-                </div>
-            </div>
-            <div class="row_box">
-                <div class=" col-md-4 row_for">
-                    <img src="/static/client/img/ls.png" alt="">
-                </div>
-                <div class="col-md-8 ">
-                    <h3>交租历史</h3>
-                    <p>交款的历史记录</p>
-                    <div><a class="a_herf" type="button" href="/user/history">进入</a></div>
-                </div>
-            </div>
-        </div>
+
+          <div class="bs-example" data-example-id="hoverable-table">
+            <table class="table table-hover">
+                <caption>房租详情 | <a href="/user/index"> 返回 </a></caption>
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>门牌号</th>
+                  <th>房间号</th>
+                  <th>水费</th>
+                  <th>电费</th>
+                  <th>租金</th>
+                  <th>押金</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for m in room_m %}
+                <tr>
+                  <th scope="row">{{ forloop.counter}}</th>
+                  <td>{{m.house_number}}</td>
+                  <td>{{m.room_num}}</td>
+                  <td>{{m.water_price}}</td>
+                  <td>{{m.power_price}}</td>
+                  <td>{{m.room_price}}</td>
+                  <td>{{m.deposit}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        
     </div>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/ionic/1.3.2/js/ionic.bundle.min.js"></script>

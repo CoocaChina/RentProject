@@ -7,7 +7,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from datetime import datetime
 #房东表
 class Landlord(models.Model):
     landlord_phone = models.CharField(max_length=13)
@@ -58,7 +58,10 @@ class User(models.Model):
     job = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     check_in_time = models.DateTimeField(db_column='check-in_time')  # Field renamed to remove unsuitable characters.
-
+    create_by = models.CharField(max_length=255)
+    create_at = models.DateTimeField(default=datetime.now)
+    def toDict(self):
+        return {'house_number':self.house_number,'room_num':self.room_num,'name':self.name,'gender':self.gender,'tel':self.tel,'id_card':self.id_card,'job':self.job,'address':self.address,'check_in_time':self.check_in_time.strftime('%Y-%m-%d %H:%M:%S'),'create_by':self.create_by,'create_at':self.create_by.create_at('%Y-%m-%d %H:%M:%S')}
     class Meta:
         managed = True
         db_table = 'user'

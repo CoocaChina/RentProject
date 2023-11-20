@@ -1,6 +1,7 @@
 {% load static from static %}
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,59 +24,85 @@
   <![endif]-->
   <!-- Google Font -->
   <link rel="stylesheet" href="{% static 'rent/local/css/google_fonts.css'%}">
+  <link rel="stylesheet" href="{% static 'rent/local/css/login.css'%}">
 </head>
+
 <body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="index2.html"><b>后台管理登录</b></a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg" style="color:red">{{ info }}</p>
+  <div class="container">
+    <!-- register -->
+    <div class="form-container sign-up-container">
+      <div class="form" >
+        <form action="#" method="post" novalidate>
+          {% csrf_token %}
+          <h2>注册</h2>
+          {% for field in form %}
+          {{field.label}}{{field}}
+          {% endfor %}
+          <button type="submit" class="signUp">注册</button>
+        </form>
+      </div>
+    </div>
+    <!-- login -->
 
-    <form action="#" method="post">
-      {% csrf_token %}
-      <div class="form-group has-feedback">
-        <select name="ENV" class="form-control" style="height:34px;" id="ENV">
-              <option value="http://api-test-2.yunx.renttech.com" selected>测试</option>
-              <option value="http://api-2.yunx.renttech.com">正式</option>
-          </select>
+    <div class="form-container sign-in-container">
+      <div class="form" >
+        <form action="{% url 'pc_index' %}" method="post" novalidate>
+          {% csrf_token %}
+          <h2>登录</h2>
+          <input type="email" name="tel" id="tel" placeholder="手机号">
+          <input type="password" name="password" id="password" placeholder="密码">
+          <!-- <a href="#" class="forget-password">忘记密码</a> -->
+          <p style="color: brown;">{{msg}}</p>
+          <p style="color: rgb(42, 165, 89);">{{msg_t}}</p>
+          <button type="submit" class="signIn">登录</button>
+        </form>
       </div>
-      <div class="form-group has-feedback">
-        <input type="text" name="username" class="form-control" placeholder="账号" value="15757185534">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" name="pass" class="form-control" placeholder="密码" value="15757185534">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+    </div>
+    <!-- overlay container -->
+    <div class="overlay_container">
+      <div class="overlay">
+        <!-- overlay left -->
+        <div class="overlay_panel overlay_left_container">
+          <h2>欢迎回来</h2>
+          <p>登录房屋出租管理系统</p>
+          <button id="sign-in">登录</button>
         </div>
-        <!-- /.col -->
+        <!-- overlay right -->
+        <div class="overlay_panel overlay_right_container">
+          <h2>你好,朋友</h2>
+          <p>第一次使用没有账号,请注册！</p>
+          <button id="sign-up">注册</button>
+        </div>
       </div>
-    </form>
-
+    </div>
   </div>
-  <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
 
-<!-- jQuery 3 -->
-<script src="{% static 'rent/bower_components/jquery/dist/jquery.min.js'%}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{% static 'rent/bower_components/bootstrap/dist/js/bootstrap.min.js'%}"></script>
-<!-- iCheck -->
-<script src="{% static 'rent/plugins/iCheck/icheck.min.js'%}"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
+  <!-- jQuery 3 -->
+  <script src="{% static 'rent/bower_components/jquery/dist/jquery.min.js'%}"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="{% static 'rent/bower_components/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+  <!-- iCheck -->
+  <script src="{% static 'rent/plugins/iCheck/icheck.min.js'%}"></script>
+  <script>
+    $(function () {
+      $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' /* optional */
+      });
     });
-  });
-</script>
+
+    const container = document.getElementsByClassName('container')[0];
+    const signIn = document.getElementById('sign-in');
+    const signUp = document.getElementById('sign-up');
+
+    signUp.onclick = function () {
+      container.classList.add('active');
+    }
+    signIn.onclick = function () {
+      container.classList.remove('active');
+    }
+  </script>
 </body>
+
 </html>

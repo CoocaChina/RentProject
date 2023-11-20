@@ -1,0 +1,91 @@
+{% extends 'rentPc/base.html' %}
+{% block main_body %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        房间管理
+        <small>后台管理</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li class="active">房间管理</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title" >房间信息</h3>
+              <a role="button" href="/room/add/" class="btn btn-primary" style="margin-left: 10px;">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加房间</a>
+
+              <div class="box-tools">
+                <form action="#" method="get">
+                        <div class="input-group input-group-sm" style="width:150px;">
+                          <input type="text" name="keyword" class="form-control pull-right" placeholder="账号/昵称">
+
+                          <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                          </div>
+                        </div>
+                    </form>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>户号</th>
+                  <th>房间号</th>
+                  <th>水费</th>
+                  <th>电费</th>
+                  <th>房租</th>
+                  <th>押金</th>
+                  <th>操作</th>
+              
+                </tr>
+                {% for page_obj in page_obj %}
+                <tr>
+                  <td>{{ page_obj.house_number }}</td>
+                  <td>{{ page_obj.room_num }}</td>
+                  <td>{{ page_obj.power_price }}</td>
+                  <td>{{ page_obj.water_price }}</td>
+                  <td>{{ page_obj.room_price }}</td>
+                  <td>{{ page_obj.deposit }}</td>
+                  <td><a href="/room/{{page_obj.house_number}}/{{page_obj.room_num}}/edit" >编辑</a></td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          
+            <div class="box-footer ">
+              <div class="pagination  pagination-sm no-margin ">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                        <!-- <a href="?page=1">1</a> -->
+                        <!-- 上一页 -->
+                    {% endif %}
+                    <span class="current">
+                      <!-- 当前页 -->
+                        第{{ page_obj.number }}页
+                    </span>
+                    {% if page_obj.has_next %}
+                    <!-- 下一页 -->
+                        <a href="?page={{ page_obj.next_page_number }}"> &raquo;</a>
+                        <!-- 总页数 -->
+                        <!-- <a href="?page={{ page_obj.paginator.num_pages }}">最后一页</a> -->
+                    {% endif %}
+                </span>
+              </div>
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock %}

@@ -4,6 +4,7 @@ from user_massage.models import User,Landlord,Room,Money
 # Create your views here.
 # 0: 用户手机号，1：房间号，2：房东手机号，3：门牌号
 user_msg=[]
+
 #用户登录
 def login(request):
     user_msg.clear()
@@ -36,6 +37,7 @@ def index(request):
 def msg(request):
 
     room_mag = User.objects.filter(room_num=user_msg[1])
+
 
     return render(request,"Client/msg.html",{"room_num":user_msg[1],"tel":user_msg[2],"user_room":room_mag,})
 # 租房详情

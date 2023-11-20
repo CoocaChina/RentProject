@@ -1,0 +1,106 @@
+{% extends 'rentPc/base.html' %}
+
+{% block css_style %}
+<style>
+
+
+
+
+</style>
+
+
+{% endblock%}
+{% block main_body %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    租客管理
+    <small>后台管理</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+    <li class="active">租客管理</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content container-fluid">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">租客信息表</h3>
+          <a role="button" href="{% url 'rent_user_add' %}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加租客</a>
+
+          <div class="box-tools">
+            <form action="#" method="get">
+              <div class="input-group input-group-sm" style="width:150px;">
+                <input type="text" name="keyword" class="form-control pull-right" placeholder="账号/昵称">
+
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tr>
+              <th>户号</th>
+              <th>房间号</th>
+              <th>姓名</th>
+              <th>性别</th>
+              <th>手机号</th>
+              <th>籍贯</th>
+              <th>身份证号</th>
+              <th>工作</th>
+              <th>年龄</th>
+              <th>入住时间</th>
+              <th>离开时间</th>
+              <th>操作</th>
+            </tr>
+            {% for page_obj in page_obj %}
+            <tr>
+              <td>{{ page_obj.house_number }}</td>
+              <td>{{ page_obj.room_num }}</td>
+              <td>{{ page_obj.name }}</td>
+              <td>{{ page_obj.gender }}</td>
+              <td>{{ page_obj.age }}</td>
+              <td>{{ page_obj.tel }}</td>
+              <td>{{ page_obj.id_card }}</td>
+              <td>{{ page_obj.job }}</td>
+              <td>{{ page_obj.address }}</td>
+              <td>{{ page_obj.check_in_time }}</td>
+              <td>{{ page_obj.leave_time }}</td>
+              <td><a href="/rent/{{page_obj.house_number}}/{{page_obj.tel}}/edit">编辑</a></td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+          
+          <ul class="pagination pagination-sm no-margin ">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% endif %}
+
+            <li><span >第{{ page_obj.number }}页</span></li>
+
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+
+</section>
+<!-- /.content -->
+{% endblock %}

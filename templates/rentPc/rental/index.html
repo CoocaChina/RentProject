@@ -1,0 +1,91 @@
+{% extends 'rentPc/base.html' %}
+{% block main_body %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    租客管理
+    <small>后台管理</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+    <li class="active">租客管理</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content container-fluid">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">租客信息表</h3>
+
+          <div class="box-tools">
+            <form action="#" method="get">
+              <div class="input-group input-group-sm" style="width:150px;">
+                <input type="text" name="keyword" class="form-control pull-right" placeholder="账号/昵称">
+
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tr>
+              <th>ID</th>
+              <th>户号</th>
+              <th>房间号</th>
+              <th>记录时间</th>
+              <th>水费</th>
+              <th>电费</th>
+              <th>房租</th>
+              <th>其他</th>
+              <th>总计</th>
+              <th>操作</th>
+            </tr>
+            {% for page_obj in page_obj %}
+            <tr>
+              <td>{{ page_obj.id }}</td>
+              <td>{{ page_obj.house_number }}</td>
+              <td>{{ page_obj.room_num }}</td>
+              <td>{{ page_obj.rent_time }}</td>
+              <td>{{ page_obj.water_content }}</td>
+              <td>{{ page_obj.kwh }}</td>
+              <td>{{ page_obj.room_price }}</td>
+              <td>{{ page_obj.other}}</td>
+              <td>{{ page_obj.total }}</td>
+              <td><a href="/rental/{{ page_obj.id}}/del">删除</a></td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+          <a role="button" href="{% url 'rental_add' %}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加月收租</a>
+
+          <ul class="pagination pagination-sm no-margin pull-right">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% endif %}
+
+            <li  class="current">{{ page_obj.number }}</li>
+           
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+
+</section>
+<!-- /.content -->
+{% endblock %}

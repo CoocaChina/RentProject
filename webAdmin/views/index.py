@@ -35,5 +35,7 @@ def login(request):
     if form.is_valid():
         form.save()
         return render(request,'rentPc/index/login.html',{"msg_t":"注册成功!","form":form})
+    else:
+        return render(request, 'rentPc/index/login.html', {"msg_t": "注册信息错误!", "form": form})
     return render(request, 'rentPc/index/login.html',{"form":form})
     
